@@ -1,0 +1,4 @@
+- git clone
+- cd apis
+- npm i
+- run apis by npx nodemon
