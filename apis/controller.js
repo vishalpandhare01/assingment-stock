@@ -1,4 +1,9 @@
-const { CompanyData, CompanyAccount } = require("./data");
+const {
+  CompanyData,
+  CompanyAccount,
+  initialSeries,
+  updateSeriesData,
+} = require("./data");
 
 async function CompanyName(req, res) {
   try {
@@ -24,7 +29,19 @@ async function Account(req, res) {
   }
 }
 
+async function getStock(req, res) {
+  try {
+     updateSeriesData();
+    return res
+      .status(200)
+      .send({ status: true, message: "success", data: initialSeries });
+  } catch (error) {
+    return res.status(500).send({ status: false, message: error.message });
+  }
+}
+
 module.exports = {
   CompanyName,
   Account,
+  getStock,
 };
